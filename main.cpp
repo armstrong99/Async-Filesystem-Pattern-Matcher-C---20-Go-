@@ -46,6 +46,7 @@ int main()
 {
     fsx::path root = ".";
     string pattern = "_x_";
+    auto start_time = chrono::high_resolution_clock::now(); // Start timer
 
     list<future<list<fsx::path>>> futures;
 
@@ -78,6 +79,11 @@ int main()
         cout << "╰─ ‼️  NO Match Found \n"
              << endl;
     }
+
+    auto end_time = chrono::high_resolution_clock::now(); // End timer
+    auto duration_ms = chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+    cout << "⏱️  Total execution time: " << duration_ms << " ms" << endl;
 
     return 0;
 }
